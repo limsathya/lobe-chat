@@ -15,7 +15,7 @@ import { DatabaseLoadingState } from '@/types/clientDB';
 const useStyles = createStyles(({ css, token, prefixCls }) => ({
   bg: css`
     padding-block: 12px;
-    padding-inline: 12px 24px;
+    padding-inline: 20px 40px;
     background: ${token.colorText};
     border-radius: 40px;
   `,
@@ -106,7 +106,7 @@ const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
                     : theme.colorBgContainer
                 }
                 strokeLinecap={'round'}
-                strokeWidth={12}
+                strokeWidth={15}
                 trailColor={rgba(theme.colorBgContainer, 0.1)}
                 type={'circle'}
               />
