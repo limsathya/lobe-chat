@@ -42,7 +42,7 @@ export default {
       initializing: '正在初始化...',
       loadingDependencies: `加载依赖中({{progress}}%)...`,
       loadingWasmModule: '加载 WASM 模块中({{progress}}%)...',
-      migrating: '正在迁移数据...',
+      migrating: '执行数据表迁移...',
       ready: '数据库已就绪',
     },
     modal: {

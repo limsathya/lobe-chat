@@ -1,4 +1,6 @@
+import { isServerMode } from '@/const/version';
 import { GlobalStore } from '@/store/global';
+import { DatabaseLoadingState } from '@/types/clientDB';
 
 import { INITIAL_STATUS } from './initialState';
 
@@ -22,7 +24,27 @@ const filePanelWidth = (s: GlobalStore) => s.status.filePanelWidth;
 const inputHeight = (s: GlobalStore) => s.status.inputHeight;
 const threadInputHeight = (s: GlobalStore) => s.status.threadInputHeight;
 
-const isPgliteNotEnabled = () => false;
+const isPgliteNotEnabled = (s: GlobalStore) =>
+  !isServerMode && s.isStatusInit && !s.status.isEnablePglite;
+
+/**
+ * 当且仅当 client db 模式，且 pglite 未初始化完成时返回 true
+ */
+const isPgliteNotInited = (s: GlobalStore) =>
+  !isServerMode &&
+  s.isStatusInit &&
+  s.status.isEnablePglite &&
+  s.initClientDBStage !== DatabaseLoadingState.Ready;
+
+/**
+ * 当且仅当 client db 模式，且 pglite 初始化完成时返回 true
+ */
+const isPgliteInited = (s: GlobalStore): boolean =>
+  isServerMode ||
+  (s.isStatusInit &&
+    s.status.isEnablePglite &&
+    s.initClientDBStage === DatabaseLoadingState.Ready) ||
+  false;
 
 const isPgliteNotInited = () => false;
 

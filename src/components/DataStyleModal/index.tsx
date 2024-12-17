@@ -26,6 +26,7 @@ const useStyles = createStyles(({ css, token, prefixCls, isDarkMode }) => ({
 
 interface DataStyleModalProps {
   children: ReactNode;
+  hideTitle?: boolean;
   icon: LucideIcon;
   onOpenChange?: (open: boolean) => void;
   open: boolean;
@@ -34,7 +35,7 @@ interface DataStyleModalProps {
 }
 
 const DataStyleModal = memo<DataStyleModalProps>(
-  ({ icon, onOpenChange, title, open, children, width = 550 }) => {
+  ({ icon, onOpenChange, title, open, children, width = 550, hideTitle }) => {
     const { styles } = useStyles();
 
     return (
@@ -48,10 +49,14 @@ const DataStyleModal = memo<DataStyleModalProps>(
         footer={null}
         open={open}
         title={
-          <Flexbox gap={8} horizontal>
-            <Icon icon={icon} />
-            {title}
-          </Flexbox>
+          !hideTitle ? (
+            <Flexbox gap={8} horizontal>
+              <Icon icon={icon} />
+              {title}
+            </Flexbox>
+          ) : (
+            <div />
+          )
         }
         width={width}
       >
