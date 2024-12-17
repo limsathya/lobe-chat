@@ -46,10 +46,6 @@ const isPgliteInited = (s: GlobalStore): boolean =>
     s.initClientDBStage === DatabaseLoadingState.Ready) ||
   false;
 
-const isPgliteNotInited = () => false;
-
-const isPgliteInited = (): boolean => true;
-
 export const systemStatusSelectors = {
   filePanelWidth,
   hidePWAInstaller,
