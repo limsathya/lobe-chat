@@ -3,7 +3,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { SkeletonList } from '@/features/Conversation';
 
-const Client = lazy(() => import('./Client'));
+const Content = lazy(() => import('./Content'));
 
 interface ChatListProps {
   mobile?: boolean;
@@ -20,7 +20,7 @@ const ChatList = ({ mobile }: ChatListProps) => (
     width={'100%'}
   >
     <Suspense fallback={<SkeletonList mobile={mobile} />}>
-      <Client mobile={mobile} />
+      <Content mobile={mobile} />
     </Suspense>
   </Flexbox>
 );
