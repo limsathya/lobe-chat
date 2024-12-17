@@ -1,7 +1,7 @@
 'use client';
 
 import { createStyles } from 'antd-style';
-import { memo } from 'react';
+import { Suspense, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import Migration from '@/app/(main)/chat/features/Migration';
@@ -41,7 +41,9 @@ const Layout = memo<LayoutProps>(({ children, session }) => {
         {children}
       </Flexbox>
       <Migration />
-      <InitClientDB bottom={100} />
+      <Suspense fallback={null}>
+        <InitClientDB bottom={100} />
+      </Suspense>
     </>
   );
 });

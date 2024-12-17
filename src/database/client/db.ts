@@ -1,6 +1,7 @@
 import type { PgliteDatabase } from 'drizzle-orm/pglite';
 
 import { ClientDBLoadingProgress, DatabaseLoadingState } from '@/types/clientDB';
+import { sleep } from '@/utils/sleep';
 
 import * as schema from '../schemas';
 import migrations from './migrations.json';
@@ -173,6 +174,9 @@ export class DatabaseManager {
         this.dbInstance = drizzle({ client: db, schema });
 
         await this.migrate(true);
+
+        this.callbacks?.onStateChange?.(DatabaseLoadingState.Finished);
+        await sleep(50);
 
         this.callbacks?.onStateChange?.(DatabaseLoadingState.Ready);
 

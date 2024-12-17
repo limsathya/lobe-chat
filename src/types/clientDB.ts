@@ -5,6 +5,7 @@ export enum DatabaseLoadingState {
   LoadingDependencies,
   LoadingWasm,
   Migrating,
+  Finished,
   Ready,
   Error,
 }
