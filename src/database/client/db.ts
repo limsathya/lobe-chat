@@ -1,10 +1,13 @@
 import type { PgliteDatabase } from 'drizzle-orm/pglite';
+import { Md5 } from 'ts-md5';
 
 import { ClientDBLoadingProgress, DatabaseLoadingState } from '@/types/clientDB';
 import { sleep } from '@/utils/sleep';
 
 import * as schema from '../schemas';
 import migrations from './migrations.json';
+
+const pgliteSchemaHashCache = 'LOBE_CHAT_PGLITE_SCHEMA_HASH';
 
 type DrizzleInstance = PgliteDatabase<typeof schema>;
 
@@ -127,6 +130,15 @@ export class DatabaseManager {
   private async migrate(skipMultiRun = false): Promise<DrizzleInstance> {
     if (this.isLocalDBSchemaSynced && skipMultiRun) return this.db;
 
+    const cacheHash = localStorage.getItem(pgliteSchemaHashCache);
+    const hash = Md5.hashStr(JSON.stringify(migrations));
+
+    // if hash is the same, no need to migrate
+    if (hash === cacheHash) {
+      this.isLocalDBSchemaSynced = true;
+      return this.db;
+    }
+
     const start = Date.now();
     try {
       this.callbacks?.onStateChange?.(DatabaseLoadingState.Migrating);
@@ -134,9 +146,10 @@ export class DatabaseManager {
       // refs: https://github.com/drizzle-team/drizzle-orm/discussions/2532
       // @ts-expect-error
       await this.db.dialect.migrate(migrations, this.db.session, {});
+      localStorage.setItem(pgliteSchemaHashCache, hash);
       this.isLocalDBSchemaSynced = true;
 
-      console.info(`✅ Local database ready in ${Date.now() - start}ms`);
+      console.info(`🗂 Migration success, take ${Date.now() - start}ms`);
     } catch (cause) {
       console.error('❌ Local database schema migration failed', cause);
       throw cause;
@@ -155,6 +168,7 @@ export class DatabaseManager {
       try {
         if (this.dbInstance) return this.dbInstance;
 
+        const time = Date.now();
         // 初始化数据库
         this.callbacks?.onStateChange?.(DatabaseLoadingState.Initializing);
 
@@ -176,6 +190,8 @@ export class DatabaseManager {
         await this.migrate(true);
 
         this.callbacks?.onStateChange?.(DatabaseLoadingState.Finished);
+        console.log(`✅ Database initialized in ${Date.now() - time}ms`);
+
         await sleep(50);
 
         this.callbacks?.onStateChange?.(DatabaseLoadingState.Ready);
