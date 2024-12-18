@@ -11,12 +11,15 @@ import { GITHUB_ISSUES } from '@/const/url';
 import { githubService } from '@/services/github';
 import { useGlobalStore } from '@/store/global';
 
-import { MigrationError } from './const';
+interface MigrationError {
+  message: string;
+  stack: string;
+}
 
 interface FailedProps {
   error?: MigrationError;
 }
-const Failed = memo<FailedProps>(({ error }) => {
+const FailedModal = memo<FailedProps>(({ error }) => {
   const { t } = useTranslation('common');
 
   const [initializeClientDB] = useGlobalStore((s) => [s.initializeClientDB]);
@@ -79,4 +82,4 @@ const Failed = memo<FailedProps>(({ error }) => {
   );
 });
 
-export default Failed;
+export default FailedModal;

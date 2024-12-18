@@ -1,11 +1,12 @@
 import { Icon } from '@lobehub/ui';
 import { Button } from 'antd';
 import { createStyles } from 'antd-style';
-import { Database, SearchCheck, Zap } from 'lucide-react';
-import { useState } from 'react';
+import { CpuIcon, Database, SearchCheck, Zap } from 'lucide-react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';
 
+import DataStyleModal from '@/components/DataStyleModal';
 import { useGlobalStore } from '@/store/global';
 
 const useStyles = createStyles(({ css, token, isDarkMode, responsive }) => ({
@@ -46,11 +47,14 @@ const useStyles = createStyles(({ css, token, isDarkMode, responsive }) => ({
   `,
 }));
 
-const Idle = () => {
+interface EnableClientDBModalProps {
+  open: boolean;
+}
+
+const EnableClientDBModal = memo<EnableClientDBModalProps>(({ open }) => {
   const { t } = useTranslation('common');
   const { styles } = useStyles();
-  const [initializeClientDB] = useGlobalStore((s) => [s.initializeClientDB]);
-  const [loading, setLoading] = useState(false);
+  const markPgliteEnabled = useGlobalStore((s) => s.markPgliteEnabled);
   const features = [
     {
       avatar: Database,
@@ -70,42 +74,36 @@ const Idle = () => {
   ];
 
   return (
-    <Center gap={48}>
-      <Flexbox>
-        <Flexbox className={styles.intro} style={{ textAlign: 'center' }} width={460}>
-          {t('clientDB.modal.desc')}
-        </Flexbox>
-      </Flexbox>
-      <Flexbox gap={32}>
-        {features.map((item) => (
-          <Flexbox align={'flex-start'} gap={24} horizontal key={item.title}>
-            <Center className={styles.iconCtn}>
-              <Icon className={styles.icon} icon={item.avatar} size={{ fontSize: 36 }} />
-            </Center>
-            <Flexbox gap={8}>
-              <p className={styles.title}>{item.title}</p>
-              <p className={styles.desc}>{item.desc}</p>
-            </Flexbox>
+    <DataStyleModal icon={CpuIcon} open={open} title={t('clientDB.modal.title')}>
+      <Center gap={48}>
+        <Flexbox>
+          <Flexbox className={styles.intro} style={{ textAlign: 'center' }} width={460}>
+            {t('clientDB.modal.desc')}
           </Flexbox>
-        ))}
-      </Flexbox>
-      <Flexbox align={'center'} gap={16} style={{ paddingBottom: 16 }}>
-        <Flexbox gap={16} horizontal justify={'center'} style={{ flexWrap: 'wrap' }}>
-          <Button
-            loading={loading}
-            onClick={async () => {
-              setLoading(true);
-              await initializeClientDB();
-            }}
-            size={'large'}
-            type={'primary'}
-          >
-            {t('clientDB.modal.enable')}
-          </Button>
         </Flexbox>
-      </Flexbox>
-    </Center>
+        <Flexbox gap={32}>
+          {features.map((item) => (
+            <Flexbox align={'flex-start'} gap={24} horizontal key={item.title}>
+              <Center className={styles.iconCtn}>
+                <Icon className={styles.icon} icon={item.avatar} size={{ fontSize: 36 }} />
+              </Center>
+              <Flexbox gap={8}>
+                <p className={styles.title}>{item.title}</p>
+                <p className={styles.desc}>{item.desc}</p>
+              </Flexbox>
+            </Flexbox>
+          ))}
+        </Flexbox>
+        <Flexbox align={'center'} gap={16} style={{ paddingBottom: 16 }}>
+          <Flexbox gap={16} horizontal justify={'center'} style={{ flexWrap: 'wrap' }}>
+            <Button onClick={markPgliteEnabled} size={'large'} type={'primary'}>
+              {t('clientDB.modal.enable')}
+            </Button>
+          </Flexbox>
+        </Flexbox>
+      </Center>
+    </DataStyleModal>
   );
-};
+});
 
-export default Idle;
+export default EnableClientDBModal;

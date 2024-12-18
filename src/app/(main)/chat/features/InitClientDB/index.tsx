@@ -1,121 +1,37 @@
 'use client';
 
-import { Progress } from 'antd';
-import { createStyles } from 'antd-style';
-import { AnimatePresence, motion } from 'framer-motion';
-import { rgba } from 'polished';
+import { Spin } from 'antd';
+import dynamic from 'next/dynamic';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Center, Flexbox } from 'react-layout-kit';
 
 import { useGlobalStore } from '@/store/global';
 import { systemStatusSelectors } from '@/store/global/selectors';
-import { DatabaseLoadingState } from '@/types/clientDB';
 
-const useStyles = createStyles(({ css, token, prefixCls }) => ({
-  bg: css`
-    padding-block: 12px;
-    padding-inline: 20px 40px;
-    background: ${token.colorText};
-    border-radius: 40px;
-  `,
-  container: css`
-    position: fixed;
-    z-index: 1000;
-  `,
-  progress: css`
-    .${prefixCls}-progress-text {
-      font-size: 12px;
-      color: ${token.colorBgContainer} !important;
-    }
-  `,
-  progressReady: css`
-    .${prefixCls}-progress-text {
-      color: ${token.colorSuccessBorder} !important;
-    }
-  `,
+const Modal = dynamic(() => import('./EnableModal'), {
+  loading: () => <Spin fullscreen />,
+  ssr: false,
+});
 
-  text: css`
-    color: ${token.colorBgContainer};
-  `,
-}));
+const InitIndicator = dynamic(() => import('./InitIndicator'), {
+  ssr: false,
+});
 
 interface InitClientDBProps {
   bottom?: number;
 }
 
-const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
-  const { styles, theme, cx } = useStyles();
-  const currentStage = useGlobalStore((s) => s.initClientDBStage || 0);
-  const { t } = useTranslation('common');
-  const useInitClientDB = useGlobalStore((s) => s.useInitClientDB);
-
-  useInitClientDB();
+const InitClientDB = memo<InitClientDBProps>(({ bottom }) => {
+  const isPgliteNotEnabled = useGlobalStore(systemStatusSelectors.isPgliteNotEnabled);
   const isPgliteNotInited = useGlobalStore(systemStatusSelectors.isPgliteNotInited);
 
-  const getStateMessage = (state: DatabaseLoadingState) => {
-    switch (state) {
-      case DatabaseLoadingState.Finished: {
-        return t('clientDB.initing.ready');
-      }
-
-      case DatabaseLoadingState.Error: {
-        return t('clientDB.initing.error');
-      }
-      case DatabaseLoadingState.Idle: {
-        return t('clientDB.initing.idle');
-      }
-      case DatabaseLoadingState.Initializing: {
-        return t('clientDB.initing.initializing');
-      }
-      case DatabaseLoadingState.LoadingDependencies: {
-        return t('clientDB.initing.loadingDependencies');
-      }
-
-      case DatabaseLoadingState.LoadingWasm: {
-        return t('clientDB.initing.loadingWasmModule');
-      }
-
-      case DatabaseLoadingState.Migrating: {
-        return t('clientDB.initing.migrating');
-      }
-    }
-  };
-
   return (
-    <AnimatePresence>
-      {isPgliteNotInited && (
-        <Center className={styles.container} style={{ bottom }} width={'100%'}>
-          <motion.div
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            initial={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Flexbox align={'center'} className={styles.bg} gap={12} horizontal>
-              <Progress
-                className={cx(
-                  styles.progress,
-                  currentStage === DatabaseLoadingState.Finished && styles.progressReady,
-                )}
-                percent={(currentStage / DatabaseLoadingState.Finished) * 100}
-                size={40}
-                strokeColor={
-                  currentStage === DatabaseLoadingState.Finished
-                    ? theme.colorSuccessActive
-                    : theme.colorBgContainer
-                }
-                strokeLinecap={'round'}
-                strokeWidth={15}
-                trailColor={rgba(theme.colorBgContainer, 0.1)}
-                type={'circle'}
-              />
-              <span className={styles.text}>{getStateMessage(currentStage)}</span>
-            </Flexbox>
-          </motion.div>
-        </Center>
-      )}
-    </AnimatePresence>
+    <>
+      {/* 当用户没有设置启用 pglite 时，强弹窗引导用户来开启弹窗 */}
+      {isPgliteNotEnabled && <Modal open={isPgliteNotEnabled} />}
+      {/* 当用户已经启用 pglite 但没有初始化时，展示初始化指示器 */}
+      {isPgliteNotInited && <InitIndicator bottom={bottom} />}
+    </>
   );
 });
+
 export default InitClientDB;
