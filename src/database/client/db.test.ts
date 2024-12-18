@@ -65,6 +65,7 @@ describe('DatabaseManager', () => {
         DatabaseLoadingState.LoadingDependencies,
         DatabaseLoadingState.LoadingWasm,
         DatabaseLoadingState.Migrating,
+        DatabaseLoadingState.Finished,
         DatabaseLoadingState.Ready,
       ]);
     });
