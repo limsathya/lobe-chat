@@ -38,9 +38,11 @@
       "error": "Đã xảy ra lỗi, vui lòng thử lại",
       "idle": "Đang chờ khởi tạo...",
       "initializing": "Đang khởi tạo...",
-      "loadingDependencies": "Đang tải phụ thuộc({{progress}}%)...",
-      "loadingWasmModule": "Đang tải mô-đun WASM({{progress}}%)...",
-      "migrating": "Đang di chuyển dữ liệu...",
+      "loadingDependencies": "Đang tải phụ thuộc...",
+      "loadingDependenciesWithProgress": "Đang tải phụ thuộc ({{progress}}%)...",
+      "loadingWasmModule": "Đang tải mô-đun WASM...",
+      "loadingWasmModuleWithProgress": "Đang tải mô-đun WASM ({{progress}}%)...",
+      "migrating": "Đang thực hiện di chuyển bảng dữ liệu...",
       "ready": "Cơ sở dữ liệu đã sẵn sàng"
     },
     "modal": {

@@ -38,9 +38,11 @@
       "error": "حدث خطأ، يرجى إعادة المحاولة",
       "idle": "في انتظار التهيئة...",
       "initializing": "جارٍ التهيئة...",
-      "loadingDependencies": "جارٍ تحميل التبعيات ({{progress}}%)...",
-      "loadingWasmModule": "جارٍ تحميل وحدة WASM ({{progress}}%)...",
-      "migrating": "جارٍ ترحيل البيانات...",
+      "loadingDependencies": "جارٍ تحميل الاعتماديات...",
+      "loadingDependenciesWithProgress": "جارٍ تحميل الاعتماديات ({{progress}}%)...",
+      "loadingWasmModule": "جارٍ تحميل وحدة WASM...",
+      "loadingWasmModuleWithProgress": "جارٍ تحميل وحدة WASM ({{progress}}%)...",
+      "migrating": "جارٍ تنفيذ ترحيل البيانات...",
       "ready": "قاعدة البيانات جاهزة"
     },
     "modal": {

@@ -38,9 +38,11 @@
       "error": "エラーが発生しました。再試行してください。",
       "idle": "初期化を待っています...",
       "initializing": "初期化中...",
-      "loadingDependencies": "依存関係を読み込んでいます({{progress}}%)...",
-      "loadingWasmModule": "WASM モジュールを読み込んでいます({{progress}}%)...",
-      "migrating": "データを移行中...",
+      "loadingDependencies": "依存関係を読み込んでいます...",
+      "loadingDependenciesWithProgress": "依存関係を読み込んでいます({{progress}}%)...",
+      "loadingWasmModule": "WASM モジュールを読み込んでいます...",
+      "loadingWasmModuleWithProgress": "WASM モジュールを読み込んでいます({{progress}}%)...",
+      "migrating": "データテーブルの移行を実行しています...",
       "ready": "データベースは準備完了です"
     },
     "modal": {

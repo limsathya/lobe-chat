@@ -38,9 +38,11 @@
       "error": "Ha ocurrido un error, por favor reintente",
       "idle": "Esperando la inicialización...",
       "initializing": "Inicializando...",
-      "loadingDependencies": "Cargando dependencias ({{progress}}%)...",
-      "loadingWasmModule": "Cargando módulo WASM ({{progress}}%)...",
-      "migrating": "Migrando datos...",
+      "loadingDependencies": "Cargando dependencias...",
+      "loadingDependenciesWithProgress": "Cargando dependencias ({{progress}}%)...",
+      "loadingWasmModule": "Cargando módulo WASM...",
+      "loadingWasmModuleWithProgress": "Cargando módulo WASM ({{progress}}%)...",
+      "migrating": "Ejecutando migración de tablas de datos...",
       "ready": "La base de datos está lista"
     },
     "modal": {

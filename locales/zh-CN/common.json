@@ -38,9 +38,11 @@
       "error": "发生错误，请重试",
       "idle": "等待初始化...",
       "initializing": "正在初始化...",
-      "loadingDependencies": "加载依赖中({{progress}}%)...",
-      "loadingWasmModule": "加载 WASM 模块中({{progress}}%)...",
-      "migrating": "正在迁移数据...",
+      "loadingDependencies": "加载依赖中...",
+      "loadingDependenciesWithProgress": "加载依赖中({{progress}}%)...",
+      "loadingWasmModule": "加载 WASM 模块中...",
+      "loadingWasmModuleWithProgress": "加载 WASM 模块中({{progress}}%)...",
+      "migrating": "执行数据表迁移...",
       "ready": "数据库已就绪"
     },
     "modal": {

@@ -38,9 +38,11 @@
       "error": "Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut",
       "idle": "Warte auf die Initialisierung...",
       "initializing": "Wird initialisiert...",
-      "loadingDependencies": "Lade Abhängigkeiten ({ {progress}}%)...",
-      "loadingWasmModule": "Lade WASM-Modul ({ {progress}}%)...",
-      "migrating": "Daten werden migriert...",
+      "loadingDependencies": "Abhängigkeiten werden geladen...",
+      "loadingDependenciesWithProgress": "Abhängigkeiten werden geladen ({{progress}}%)...",
+      "loadingWasmModule": "WASM-Modul wird geladen...",
+      "loadingWasmModuleWithProgress": "WASM-Modul wird geladen ({{progress}}%)...",
+      "migrating": "Datenbankmigration wird durchgeführt...",
       "ready": "Datenbank ist bereit"
     },
     "modal": {

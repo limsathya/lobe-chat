@@ -38,9 +38,11 @@
       "error": "Wystąpił błąd, proszę spróbować ponownie",
       "idle": "Oczekiwanie na inicjalizację...",
       "initializing": "Inicjalizowanie...",
-      "loadingDependencies": "Ładowanie zależności ({{progress}}%)...",
-      "loadingWasmModule": "Ładowanie modułu WASM ({{progress}}%)...",
-      "migrating": "Migracja danych...",
+      "loadingDependencies": "Ładowanie zależności...",
+      "loadingDependenciesWithProgress": "Ładowanie zależności ({{progress}}%)...",
+      "loadingWasmModule": "Ładowanie modułu WASM...",
+      "loadingWasmModuleWithProgress": "Ładowanie modułu WASM ({{progress}}%)...",
+      "migrating": "Wykonywanie migracji tabeli danych...",
       "ready": "Baza danych gotowa"
     },
     "modal": {

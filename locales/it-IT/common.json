@@ -38,9 +38,11 @@
       "error": "Si è verificato un errore, si prega di riprovare",
       "idle": "In attesa di inizializzazione...",
       "initializing": "In fase di inizializzazione...",
-      "loadingDependencies": "Caricamento delle dipendenze ({ {progress}}%)...",
-      "loadingWasmModule": "Caricamento del modulo WASM ({ {progress}}%)...",
-      "migrating": "In fase di migrazione dei dati...",
+      "loadingDependencies": "Caricamento delle dipendenze in corso...",
+      "loadingDependenciesWithProgress": "Caricamento delle dipendenze in corso ({{progress}}%)...",
+      "loadingWasmModule": "Caricamento del modulo WASM in corso...",
+      "loadingWasmModuleWithProgress": "Caricamento del modulo WASM in corso ({{progress}}%)...",
+      "migrating": "Esecuzione della migrazione della tabella dati...",
       "ready": "Database pronto"
     },
     "modal": {

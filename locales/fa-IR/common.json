@@ -38,9 +38,11 @@
       "error": "خطایی رخ داده است، لطفاً دوباره تلاش کنید",
       "idle": "در حال انتظار برای راه‌اندازی...",
       "initializing": "در حال راه‌اندازی...",
-      "loadingDependencies": "در حال بارگذاری وابستگی‌ها ({{progress}}%)...",
-      "loadingWasmModule": "در حال بارگذاری ماژول WASM ({{progress}}%)...",
-      "migrating": "در حال انتقال داده‌ها...",
+      "loadingDependencies": "در حال بارگذاری وابستگی‌ها...",
+      "loadingDependenciesWithProgress": "در حال بارگذاری وابستگی‌ها ({{progress}}%)...",
+      "loadingWasmModule": "در حال بارگذاری ماژول WASM...",
+      "loadingWasmModuleWithProgress": "در حال بارگذاری ماژول WASM ({{progress}}%)...",
+      "migrating": "در حال انجام مهاجرت جدول داده‌ها...",
       "ready": "پایگاه داده آماده است"
     },
     "modal": {

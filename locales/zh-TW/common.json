@@ -38,9 +38,11 @@
       "error": "發生錯誤，請重試",
       "idle": "等待初始化...",
       "initializing": "正在初始化...",
-      "loadingDependencies": "加載依賴中({{progress}}%)...",
-      "loadingWasmModule": "加載 WASM 模塊中({{progress}}%)...",
-      "migrating": "正在遷移數據...",
+      "loadingDependencies": "載入依賴中...",
+      "loadingDependenciesWithProgress": "載入依賴中({{progress}}%)...",
+      "loadingWasmModule": "載入 WASM 模組中...",
+      "loadingWasmModuleWithProgress": "載入 WASM 模組中({{progress}}%)...",
+      "migrating": "執行資料表遷移...",
       "ready": "數據庫已就緒"
     },
     "modal": {

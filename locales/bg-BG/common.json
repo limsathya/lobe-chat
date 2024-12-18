@@ -38,9 +38,11 @@
       "error": "Възникна грешка, моля опитайте отново",
       "idle": "Изчакване на инициализация...",
       "initializing": "Инициализиране...",
-      "loadingDependencies": "Зареждане на зависимости ({{progress}}%)...",
-      "loadingWasmModule": "Зареждане на WASM модула ({{progress}}%)...",
-      "migrating": "Мигриране на данни...",
+      "loadingDependencies": "Зареждане на зависимости...",
+      "loadingDependenciesWithProgress": "Зареждане на зависимости ({{progress}}%)...",
+      "loadingWasmModule": "Зареждане на WASM модула...",
+      "loadingWasmModuleWithProgress": "Зареждане на WASM модула ({{progress}}%)...",
+      "migrating": "Извършване на миграция на данни...",
       "ready": "Базата данни е готова"
     },
     "modal": {

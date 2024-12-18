@@ -38,9 +38,11 @@
       "error": "Er is een fout opgetreden, probeer het opnieuw",
       "idle": "Wachten op initialisatie...",
       "initializing": "Bezig met initialiseren...",
-      "loadingDependencies": "Afhankelijkheden laden ({{progress}}%)...",
-      "loadingWasmModule": "WASM-module laden ({{progress}}%)...",
-      "migrating": "Bezig met gegevens migreren...",
+      "loadingDependencies": "Afhankelijkheden laden...",
+      "loadingDependenciesWithProgress": "Afhankelijkheden laden ({{progress}}%)...",
+      "loadingWasmModule": "WASM-module laden...",
+      "loadingWasmModuleWithProgress": "WASM-module laden ({{progress}}%)...",
+      "migrating": "Gegevens migreren...",
       "ready": "Database is gereed"
     },
     "modal": {

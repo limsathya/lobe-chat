@@ -38,9 +38,11 @@
       "error": "Hata oluştu, lütfen tekrar deneyin",
       "idle": "Başlatma bekleniyor...",
       "initializing": "Başlatılıyor...",
-      "loadingDependencies": "Bağımlılıklar yükleniyor ({{progress}}%)...",
-      "loadingWasmModule": "WASM modülü yükleniyor ({{progress}}%)...",
-      "migrating": "Veri taşınıyor...",
+      "loadingDependencies": "Bağlantılar yükleniyor...",
+      "loadingDependenciesWithProgress": "Bağlantılar yükleniyor ({{progress}}%)...",
+      "loadingWasmModule": "WASM modülü yükleniyor...",
+      "loadingWasmModuleWithProgress": "WASM modülü yükleniyor ({{progress}}%)...",
+      "migrating": "Veri tablosu taşınıyor...",
       "ready": "Veritabanı hazır"
     },
     "modal": {

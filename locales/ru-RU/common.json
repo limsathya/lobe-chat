@@ -38,9 +38,11 @@
       "error": "Произошла ошибка, пожалуйста, повторите попытку",
       "idle": "Ожидание инициализации...",
       "initializing": "Инициализация...",
-      "loadingDependencies": "Загрузка зависимостей ({{progress}}%)...",
-      "loadingWasmModule": "Загрузка модуля WASM ({{progress}}%)...",
-      "migrating": "Миграция данных...",
+      "loadingDependencies": "Загрузка зависимостей...",
+      "loadingDependenciesWithProgress": "Загрузка зависимостей ({{progress}}%)...",
+      "loadingWasmModule": "Загрузка модуля WASM...",
+      "loadingWasmModuleWithProgress": "Загрузка модуля WASM ({{progress}}%)...",
+      "migrating": "Выполнение миграции таблицы данных...",
       "ready": "База данных готова"
     },
     "modal": {

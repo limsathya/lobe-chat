@@ -38,9 +38,11 @@
       "error": "오류가 발생했습니다. 재시도해 주세요.",
       "idle": "초기화 대기 중...",
       "initializing": "초기화 중...",
-      "loadingDependencies": "의존성 로딩 중({{progress}}%)...",
-      "loadingWasmModule": "WASM 모듈 로딩 중({{progress}}%)...",
-      "migrating": "데이터 마이그레이션 중...",
+      "loadingDependencies": "의존성 로드 중...",
+      "loadingDependenciesWithProgress": "의존성 로드 중({{progress}}%)...",
+      "loadingWasmModule": "WASM 모듈 로드 중...",
+      "loadingWasmModuleWithProgress": "WASM 모듈 로드 중({{progress}}%)...",
+      "migrating": "데이터베이스 마이그레이션 실행 중...",
       "ready": "데이터베이스 준비 완료"
     },
     "modal": {

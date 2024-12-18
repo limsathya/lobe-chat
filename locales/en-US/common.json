@@ -38,9 +38,11 @@
       "error": "An error occurred, please try again",
       "idle": "Waiting for initialization...",
       "initializing": "Initializing...",
-      "loadingDependencies": "Loading dependencies ({{progress}}%)...",
-      "loadingWasmModule": "Loading WASM module ({{progress}}%)...",
-      "migrating": "Migrating data...",
+      "loadingDependencies": "Loading dependencies...",
+      "loadingDependenciesWithProgress": "Loading dependencies ({{progress}}%)...",
+      "loadingWasmModule": "Loading WASM module...",
+      "loadingWasmModuleWithProgress": "Loading WASM module ({{progress}}%)...",
+      "migrating": "Performing database migration...",
       "ready": "Database is ready"
     },
     "modal": {

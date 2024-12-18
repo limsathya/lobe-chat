@@ -38,9 +38,11 @@
       "error": "Ocorreu um erro, por favor tente novamente",
       "idle": "Aguardando inicialização...",
       "initializing": "Inicializando...",
-      "loadingDependencies": "Carregando dependências({{progress}}%)...",
-      "loadingWasmModule": "Carregando módulo WASM({{progress}}%)...",
-      "migrating": "Migrando dados...",
+      "loadingDependencies": "Carregando dependências...",
+      "loadingDependenciesWithProgress": "Carregando dependências ({{progress}}%)...",
+      "loadingWasmModule": "Carregando módulo WASM...",
+      "loadingWasmModuleWithProgress": "Carregando módulo WASM ({{progress}}%)...",
+      "migrating": "Executando migração de tabela de dados...",
       "ready": "Banco de dados pronto"
     },
     "modal": {
