@@ -29,7 +29,7 @@ const InitClientDB = memo<InitClientDBProps>(({ bottom }) => {
       {/* 当用户没有设置启用 pglite 时，强弹窗引导用户来开启弹窗 */}
       {isPgliteNotEnabled && <Modal open={isPgliteNotEnabled} />}
       {/* 当用户已经启用 pglite 但没有初始化时，展示初始化指示器 */}
-      {isPgliteNotInited && <InitIndicator bottom={bottom} />}
+      {isPgliteNotInited && <InitIndicator bottom={bottom} show={isPgliteNotInited} />}
     </>
   );
 });

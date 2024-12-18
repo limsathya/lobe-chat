@@ -9,13 +9,12 @@ import { useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';
 
 import { useGlobalStore } from '@/store/global';
-import { systemStatusSelectors } from '@/store/global/selectors';
 import { DatabaseLoadingState } from '@/types/clientDB';
 
 const useStyles = createStyles(({ css, token, prefixCls }) => ({
   bg: css`
-    padding-block: 12px;
-    padding-inline: 20px 40px;
+    padding-block: 8px;
+    padding-inline: 8px 32px;
     background: ${token.colorText};
     border-radius: 40px;
   `,
@@ -36,27 +35,28 @@ const useStyles = createStyles(({ css, token, prefixCls }) => ({
   `,
 
   text: css`
-    font-size: 16px;
+    font-size: 15px;
     color: ${token.colorBgContainer};
   `,
 }));
 
 interface InitClientDBProps {
   bottom?: number;
+  show: boolean;
 }
 
-const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
+const InitClientDB = memo<InitClientDBProps>(({ bottom = 80, show }) => {
   const { styles, theme, cx } = useStyles();
   const currentStage = useGlobalStore((s) => s.initClientDBStage || 0);
   const { t } = useTranslation('common');
   const useInitClientDB = useGlobalStore((s) => s.useInitClientDB);
-  const isPgliteNotInited = useGlobalStore(systemStatusSelectors.isPgliteNotInited);
 
   useInitClientDB();
 
   const getStateMessage = (state: DatabaseLoadingState) => {
     switch (state) {
-      case DatabaseLoadingState.Finished: {
+      case DatabaseLoadingState.Finished:
+      case DatabaseLoadingState.Ready: {
         return t('clientDB.initing.ready');
       }
 
@@ -85,7 +85,7 @@ const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
 
   return (
     <AnimatePresence>
-      {isPgliteNotInited && true && (
+      {show && (
         <Center className={styles.container} style={{ bottom }} width={'100%'}>
           <motion.div
             animate={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
                   currentStage === DatabaseLoadingState.Finished && styles.progressReady,
                 )}
                 format={(percent) => percent}
-                percent={parseInt(((currentStage / DatabaseLoadingState.Ready) * 100).toFixed(0))}
+                percent={parseInt(((currentStage / DatabaseLoadingState.Finished) * 100).toFixed(0))}
                 size={40}
                 strokeColor={
                   currentStage === DatabaseLoadingState.Finished
@@ -108,7 +108,7 @@ const InitClientDB = memo<InitClientDBProps>(({ bottom = 80 }) => {
                     : theme.colorBgContainer
                 }
                 strokeLinecap={'round'}
-                strokeWidth={12}
+                strokeWidth={10}
                 trailColor={rgba(theme.colorBgContainer, 0.1)}
                 type={'circle'}
               />
